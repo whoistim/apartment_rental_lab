@@ -2,9 +2,10 @@
 
 function Building(address) {
   // building has an address
-  // ...
+this.address = address;
   // and array of units
-  // ...
+this.units = [];
+this.manager = null;
 }
 
 Building.prototype.setManager = function(person) {
@@ -15,20 +16,24 @@ Building.prototype.setManager = function(person) {
   // we're giving you this `if` statement for free.  in most other
   // cases you can use `instanceof` to check the class of something.
   if (person.constructor.name === "Manager") {
-    // ...
-  }
+this.manager= person;  }
 };
 
 Building.prototype.getManager = function(){
   // return this.manager 
-  // ..
+return (this.manager);
 };
 
 Building.prototype.addTenant = function(unit, tenant) {
   // add tenant but check to make sure there
   // is a manager first and a tenant has 2 references
   // Note that tenenat does not belong to Building, but to Unit
-  // ...
+  var isManager = (this.unit.building.manager!== null);
+  var areReferences = (this.tenant.references.length>=2);
+  if(isManager && areReferences){
+    this.unit.tenant=tenant;
+
+  }
 };
 
 Building.prototype.removeTenant = function(unit, tenant) {

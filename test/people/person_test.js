@@ -15,5 +15,5 @@ describe("Person", function(){
       expect(john.contact).to.eql("123-4567");
     });
 
-  })
+  });
 });
