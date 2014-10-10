@@ -11,7 +11,7 @@ this.tenant = null;
 
 Unit.prototype.available = function(){
   // Returns true if unit is available, otherwise false
-return this.tenant!==null;
+return this.tenant===null;
 };
 
 

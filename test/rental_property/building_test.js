@@ -50,8 +50,6 @@ describe("Building", function(){
         myBuilding.units = [myUnit];
         myBuilding.setManager(manager);
         myBuilding.addTenant(myUnit, tenant);
-        console.log(isManager);
-        console.log(addReference);
         expect(myUnit.available()).to.eql(true);
       });
 
