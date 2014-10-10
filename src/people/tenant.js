@@ -4,7 +4,7 @@ function Tenant(name, contact) {
   // inherits name contact from Person
 Person.call(this,name, contact);
   // tennant has 'array' of references
-this.references= [];
+this.references = [];
 
 }
 
