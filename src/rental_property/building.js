@@ -28,7 +28,7 @@ Building.prototype.addTenant = function(unit, tenant) {
   // add tenant but check to make sure there
   // is a manager first and a tenant has 2 references
   // Note that tenenat does not belong to Building, but to Unit
-  var isManager = (unit.building.manager!== null);
+  var isManager = (this.manager!== null);
   //for the unit passed-in, if its building's manager is not null, then isManager is true.
   var areReferences = (tenant.references.length>=2);
   //for the tenant passed-in, if its refs is at least 2, then areReferences is true.
@@ -36,12 +36,15 @@ Building.prototype.addTenant = function(unit, tenant) {
   if((isManager && areReferences) && (this.units.indexOf(unit)!== -1) &&
     unit.available()){
     unit.tenant=tenant;
-
+    console.log("Inside of Building the " + unit.tenant.name + " moved in to " + unit.number);
   }
 };
 
 Building.prototype.removeTenant = function(unit, tenant) {
   // remove tenant. below tests for:
+if(unit.tenant !== tenant) {
+  console.log("He doesn't live here.");
+}
 if(this.manager &&//this building's manager not equal to null.
   this.units.indexOf(unit)!==-1 &&//this building's unit array includes the passed in unit
   unit.tenant === tenant){//the passed-in unit's tenant matches the passed-in tenant
@@ -66,14 +69,17 @@ Building.prototype.availableUnits = function(){
 Building.prototype.rentedUnits = function(){
   // return rented units
   var fullUnits = [];
-  this.units.forEach(function(taco2){//looks at each unit in this building and
+  // console.log("this.units is " + this.units);
+  this.units.forEach(function(taco){//looks at each unit in this building and
     //for each it tests to see if the unit "taco2" is available. If not (!), then it adds
     //the taco2 to the fullUnits array.
-    if (!taco2.available()) {
-      fullUnits.push(taco2);
+    // console.log("Taco is " + taco);
+    if (!taco.available()) {
+      fullUnits.push(taco);
     }
   });
-  return(fullUnits);//passes back to rentedUnits() an array of the rented units.
+  // console.log("fullUnits is" + fullUnits);
+ return(fullUnits);//passes back to rentedUnits() an array of the rented units.
 };
 
 module.exports = Building;

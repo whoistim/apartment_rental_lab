@@ -1,7 +1,7 @@
 function Unit (number, building, sqft, rent) {
   // set params above as instance variables
 this.number = number;
-this.building = building;
+this.building = building.address;
 this.sqft = sqft;
 this.rent = rent;
 
